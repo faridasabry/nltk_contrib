@@ -274,8 +274,9 @@ class TextGrid(object):
         for i in range(len(self.tiers)):
             oo_file += "%4s%s [%s]" % ("", "item", i + 1)
             _curr_tier = self.tiers[i]
-            for (x, y) in _curr_tier.header:
-                oo_file += "%8s%s = \"%s\"" % ("", x, y)
+            if(hasattr(_curr_tier,'header')):
+                for (x, y) in _curr_tier.header:
+                   oo_file += "%8s%s = \"%s\"" % ("", x, y)
             if _curr_tier.classid != TEXTTIER:
                 for (xmin, xmax, text) in _curr_tier.simple_transcript:
                     oo_file += "%12s%s = %s" % ("", "xmin", xmin)
